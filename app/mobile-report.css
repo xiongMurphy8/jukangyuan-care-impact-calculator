@@ -1,0 +1,360 @@
+/* Mobile readability: keep supporting copy legible and controls easy to tap. */
+.step-with-action > button {
+  margin-left: auto;
+  min-height: 36px;
+  padding: 0 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.eligibility-details {
+  margin-top: 28px;
+}
+
+.eligibility-details > summary {
+  background: #f7f4ed;
+}
+
+.eligibility-details .checks {
+  margin: 0 15px 15px;
+}
+
+.status.idle {
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .13);
+}
+
+.status.idle > i {
+  background: rgba(255, 255, 255, .16);
+  color: #fff;
+}
+
+.result-head button:disabled {
+  cursor: not-allowed;
+  opacity: .5;
+}
+
+@media (max-width: 680px) {
+  body {
+    font-size: 16px;
+  }
+
+  .hero,
+  .hero-grid {
+    min-height: 560px;
+  }
+
+  .hero-grid {
+    gap: 24px;
+  }
+
+  .brand b {
+    font-size: 18px;
+  }
+
+  .brand small,
+  .eyebrow,
+  .section-title > small,
+  .result-head > div > small,
+  .policy-head small {
+    font-size: 11px;
+  }
+
+  .hero h1 {
+    font-size: 46px;
+  }
+
+  .intro {
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  .hero-actions button,
+  .pdf,
+  .result-head button {
+    min-height: 48px;
+    font-size: 15px;
+  }
+
+  .hero-actions small,
+  .hero-proof span {
+    font-size: 12px;
+  }
+
+  .hero-proof b {
+    font-size: 24px;
+  }
+
+  .hero-proof {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .hero-proof > div {
+    min-width: 0;
+    padding: 12px 10px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hero-proof span {
+    font-size: 10px;
+  }
+
+  .section-title {
+    margin-bottom: 32px;
+  }
+
+  .calculator {
+    padding-top: 56px;
+  }
+
+  .section-title h2,
+  .result-head h2,
+  .policy-head h2 {
+    font-size: 34px;
+  }
+
+  .section-title p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .step b {
+    font-size: 17px;
+  }
+
+  .step-with-action {
+    align-items: flex-start;
+  }
+
+  .step-with-action > button {
+    min-height: 40px;
+    font-size: 13px;
+  }
+
+  .step small,
+  .fields label > small,
+  .fields label > div > small,
+  summary small,
+  .params > label,
+  .checks small {
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .fields label > b,
+  .checks b,
+  summary b {
+    font-size: 14px;
+  }
+
+  .fields label > div {
+    height: 62px;
+  }
+
+  .fields input {
+    font-size: 22px;
+  }
+
+  .checks > div,
+  .checks > label {
+    min-height: 88px;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .eligibility-details .checks {
+    margin: 0 10px 10px;
+  }
+
+  .checks select {
+    min-height: 46px;
+    font-size: 14px;
+  }
+
+  .toggle button {
+    width: 64px;
+    height: 44px;
+    font-size: 14px;
+  }
+
+  summary {
+    min-height: 64px;
+    align-items: center;
+  }
+
+  .params > label {
+    font-size: 13px;
+  }
+
+  .params > label > div {
+    height: 46px;
+  }
+
+  .params input {
+    font-size: 16px;
+  }
+
+  .live {
+    padding: 25px 20px;
+  }
+
+  .live-head b {
+    font-size: 17px;
+  }
+
+  .live-head span {
+    font-size: 10px;
+  }
+
+  .live-number {
+    margin-top: 30px;
+  }
+
+  .live-number small,
+  .live-number span,
+  .stats small,
+  .status small,
+  .live > p {
+    font-size: 11px;
+    line-height: 1.55;
+  }
+
+  .live-number strong {
+    font-size: 44px;
+  }
+
+  .stats b {
+    font-size: 25px;
+  }
+
+  .status b {
+    font-size: 13px;
+  }
+
+  .result-cards span,
+  .result-cards small,
+  .row,
+  .row > span,
+  .row > em {
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .result-cards strong {
+    font-size: 38px;
+  }
+
+  .row > b {
+    font-size: 14px;
+  }
+
+  .row > strong {
+    font-size: 16px;
+  }
+
+  .policy-head > p,
+  .policy-grid > a > b,
+  .policy-grid > a > small,
+  footer p,
+  footer > .shell > a:last-child {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .policy-grid > a > div > span {
+    font-size: 11px;
+  }
+}
+
+/* The downloaded report remains A4, with type enlarged for phone PDF viewers. */
+.print-report.exporting {
+  padding: 40px;
+  font-size: 14px;
+  line-height: 1.5;
+  z-index: 0;
+}
+
+.exporting .print-brand span,
+.exporting .print-brand > small,
+.exporting .print-title > p,
+.exporting .print-title > div {
+  font-size: 12px;
+}
+
+.exporting .print-brand b {
+  font-size: 24px;
+}
+
+.exporting .print-title h1 {
+  font-size: 40px;
+}
+
+.exporting .print-inputs h2,
+.exporting .print-section-title,
+.exporting .print-assumptions h3,
+.exporting .print-policies h3 {
+  font-size: 18px;
+}
+
+.exporting .print-inputs span,
+.exporting .print-summary > span,
+.exporting .result-cards span,
+.exporting .print-status span,
+.exporting .print-assumptions p,
+.exporting .print-policies > div {
+  font-size: 13px;
+}
+
+.exporting .print-inputs strong {
+  font-size: 23px;
+}
+
+.exporting .print-summary strong,
+.exporting .result-cards strong {
+  font-size: 31px;
+}
+
+.exporting .print-summary .hero-metric strong {
+  font-size: 35px;
+}
+
+.exporting .print-status b {
+  font-size: 17px;
+}
+
+.exporting .result-cards small,
+.exporting .row,
+.exporting .row.head,
+.exporting .row > span,
+.exporting .row > em,
+.exporting .print-footer p {
+  font-size: 12px;
+}
+
+.exporting .row {
+  min-height: 66px;
+  line-height: 1.55;
+}
+
+.exporting .row > b {
+  font-size: 13px;
+}
+
+.exporting .row > strong {
+  font-size: 17px;
+}
+
+.exporting .print-policies small {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.exporting .print-footer b {
+  font-size: 15px;
+}
