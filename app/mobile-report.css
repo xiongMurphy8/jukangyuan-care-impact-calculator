@@ -358,3 +358,387 @@
 .exporting .print-footer b {
   font-size: 15px;
 }
+
+.consult-nav {
+  background: var(--coral) !important;
+  border-color: var(--coral) !important;
+}
+
+.consult-primary,
+.consult-secondary,
+.lead-prompt button,
+.lead-submit {
+  border: 0;
+  border-radius: 12px;
+  background: var(--mint);
+  color: var(--navy);
+  font-weight: 800;
+}
+
+.consult-primary {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 10px;
+}
+
+.result-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.result-actions .consult-secondary {
+  padding: 11px 16px;
+}
+
+.lead-prompt {
+  margin-top: 26px;
+  padding: 26px;
+  border: 1px solid rgba(168, 219, 199, .28);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(168, 219, 199, .13), rgba(245, 107, 93, .09));
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+
+.lead-prompt small {
+  color: var(--mint);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .2em;
+}
+
+.lead-prompt h3 {
+  margin: 10px 0;
+  font: 30px/1.2 "Songti SC", STSong, Georgia, serif;
+}
+
+.lead-prompt p {
+  margin: 0;
+  max-width: 720px;
+  color: rgba(255, 255, 255, .58);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.lead-prompt button {
+  min-height: 50px;
+  padding: 0 22px;
+  white-space: nowrap;
+}
+
+.lead-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+}
+
+.lead-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(5, 22, 31, .68);
+  backdrop-filter: blur(8px);
+}
+
+.lead-panel {
+  position: relative;
+  width: min(760px, 100%);
+  max-height: min(760px, calc(100vh - 44px));
+  overflow: auto;
+  border-radius: 18px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .28);
+  padding: 32px;
+}
+
+.lead-close {
+  position: absolute;
+  right: 18px;
+  top: 16px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--muted);
+  font-size: 24px;
+  line-height: 1;
+}
+
+.lead-copy small {
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .18em;
+}
+
+.lead-copy h2 {
+  margin: 10px 0;
+  font: 38px/1.18 "Songti SC", STSong, Georgia, serif;
+}
+
+.lead-copy p {
+  max-width: 620px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.lead-snapshot {
+  margin: 18px 0 22px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.lead-snapshot span {
+  padding: 16px;
+  border-radius: 12px;
+  background: #f1eee6;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.lead-snapshot strong {
+  color: var(--coral);
+  font: 26px Georgia, serif;
+}
+
+.lead-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.lead-fields label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.lead-fields label:last-child {
+  grid-column: 1 / -1;
+}
+
+.lead-fields em {
+  color: var(--coral);
+  font-style: normal;
+  font-size: 10px;
+}
+
+.lead-fields input,
+.lead-fields textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  outline: none;
+  padding: 13px 14px;
+}
+
+.lead-fields textarea {
+  min-height: 86px;
+  resize: vertical;
+}
+
+.lead-fields input:focus,
+.lead-fields textarea:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(32, 125, 105, .12);
+}
+
+.lead-preview {
+  margin-top: 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.lead-preview b {
+  display: block;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+}
+
+.lead-preview pre {
+  margin: 0;
+  max-height: 170px;
+  overflow: auto;
+  padding: 14px;
+  color: #39515a;
+  font: 12px/1.65 "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+  white-space: pre-wrap;
+}
+
+.lead-submit {
+  width: 100%;
+  min-height: 52px;
+  margin-top: 16px;
+  background: var(--coral);
+  color: #fff;
+  font-size: 15px;
+}
+
+.lead-hint {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+.mobile-consult-bar {
+  display: none;
+}
+
+.exporting .print-next-step {
+  margin-top: 24px;
+  padding: 18px 20px;
+  border-radius: 10px;
+  background: #e9f5f0;
+  border: 1px solid #cfe6dc;
+}
+
+.exporting .print-next-step h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.exporting .print-next-step p,
+.exporting .print-next-step strong {
+  display: block;
+  margin: 0;
+  color: #425b64;
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.exporting .print-next-step strong {
+  margin-top: 8px;
+  color: #17323d;
+}
+
+@media (max-width: 680px) {
+  body {
+    padding-bottom: 74px;
+  }
+
+  .consult-primary,
+  .consult-secondary,
+  .lead-submit {
+    min-height: 48px;
+    font-size: 15px;
+  }
+
+  .result-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .result-actions button {
+    width: 100%;
+  }
+
+  .lead-prompt {
+    padding: 20px;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .lead-prompt h3 {
+    font-size: 28px;
+  }
+
+  .lead-prompt p {
+    font-size: 13px;
+  }
+
+  .lead-prompt button {
+    width: 100%;
+  }
+
+  .lead-layer {
+    padding: 0;
+    align-items: end;
+  }
+
+  .lead-panel {
+    width: 100%;
+    max-height: 88vh;
+    border-radius: 18px 18px 0 0;
+    padding: 26px 18px 20px;
+  }
+
+  .lead-copy h2 {
+    font-size: 31px;
+  }
+
+  .lead-copy p,
+  .lead-fields label,
+  .lead-preview pre,
+  .lead-hint {
+    font-size: 13px;
+  }
+
+  .lead-fields,
+  .lead-snapshot {
+    grid-template-columns: 1fr;
+  }
+
+  .lead-fields input,
+  .lead-fields textarea {
+    min-height: 48px;
+  }
+
+  .mobile-consult-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap: 10px;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255, 253, 248, .94);
+    border-top: 1px solid var(--line);
+    backdrop-filter: blur(12px);
+  }
+
+  .mobile-consult-bar button {
+    min-height: 48px;
+    border: 0;
+    border-radius: 12px;
+    font-weight: 800;
+  }
+
+  .mobile-consult-bar button:first-child {
+    background: var(--navy);
+    color: #fff;
+  }
+
+  .mobile-consult-bar button:first-child:disabled {
+    opacity: .45;
+  }
+
+  .mobile-consult-bar button:last-child {
+    background: var(--coral);
+    color: #fff;
+  }
+}

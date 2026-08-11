@@ -26,6 +26,8 @@ test("renders the finished 聚康源 calculator", async () => {
   assert.match(html, /由聚康源提供服务/);
   assert.match(html, /等待客户数据/);
   assert.match(html, /填写完成后生成 PDF/);
+  assert.match(html, /咨询复核/);
+  assert.match(html, /获取正式复核方案/);
   assert.match(html, /placeholder="例如 1,200,000"/);
   assert.match(html, /class="eligibility-details"/);
   assert.doesNotMatch(html, /value="1200000"/);
@@ -40,6 +42,9 @@ test("keeps PDF generation direct and reports failures", async () => {
   assert.match(page, /import\("html2canvas"\)/);
   assert.match(page, /import\("jspdf"\)/);
   assert.match(page, /download\.download = "聚康源-爱心就业价值测算报告\.pdf"/);
+  assert.match(page, /下一步：获取正式复核方案/);
+  assert.match(page, /复制咨询信息/);
+  assert.match(page, /手机或微信/);
   assert.match(page, /PDF 生成失败，请刷新页面后重试/);
   assert.doesNotMatch(page, /window\.print/);
   assert.match(packageJson, /"html2canvas"/);
