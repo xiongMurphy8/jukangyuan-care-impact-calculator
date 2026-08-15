@@ -37,6 +37,7 @@ test("renders the finished 聚康源 calculator", async () => {
 
 test("keeps PDF generation direct and reports failures", async () => {
   const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
+  const leadRoute = await readFile(new URL("../app/api/leads/route.ts", import.meta.url), "utf8");
   const packageJson = await readFile(new URL("../package.json", import.meta.url), "utf8");
 
   assert.match(page, /import\("html2canvas"\)/);
@@ -44,6 +45,10 @@ test("keeps PDF generation direct and reports failures", async () => {
   assert.match(page, /download\.download = "聚康源-爱心就业价值测算报告\.pdf"/);
   assert.match(page, /下一步：获取正式复核方案/);
   assert.match(page, /复制咨询信息/);
+  assert.match(page, /\/api\/leads/);
+  assert.match(leadRoute, /TENCENT_LEAD_WEBHOOK_URL/);
+  assert.match(page, /提交并留存记录/);
+  assert.match(page, /授权聚康源留存/);
   assert.match(page, /手机或微信/);
   assert.match(page, /PDF 生成失败，请刷新页面后重试/);
   assert.doesNotMatch(page, /window\.print/);

@@ -1,4 +1,37 @@
-// Intentionally empty by default.
-// Add Drizzle tables here when the site actually needs a database.
-// See examples/d1/db/schema.ts for an opt-in example.
-export {};
+import { sql } from "drizzle-orm";
+import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+
+export const leads = sqliteTable("leads", {
+  id: text("id").primaryKey(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  sourceUrl: text("source_url").notNull().default(""),
+  userAgent: text("user_agent").notNull().default(""),
+  contactName: text("contact_name").notNull(),
+  contactMethod: text("contact_method").notNull(),
+  contactRegion: text("contact_region").notNull().default(""),
+  contactMessage: text("contact_message").notNull().default(""),
+  vatAmount: text("vat_amount").notNull().default(""),
+  peopleCount: integer("people_count").notNull().default(0),
+  minWage: text("min_wage").notNull().default(""),
+  avgWage: text("avg_wage").notNull().default(""),
+  salary: text("salary").notNull().default(""),
+  social: text("social").notNull().default(""),
+  taxRate: text("tax_rate").notNull().default(""),
+  business: text("business").notNull().default(""),
+  revenue: text("revenue").notNull().default(""),
+  separate: text("separate").notNull().default(""),
+  employment: text("employment").notNull().default(""),
+  grade: text("grade").notNull().default(""),
+  hires: integer("hires").notNull().default(0),
+  ratio: text("ratio").notNull().default(""),
+  vatPotential: text("vat_potential").notNull().default(""),
+  fundPotential: text("fund_potential").notNull().default(""),
+  incomeTaxPotential: text("income_tax_potential").notNull().default(""),
+  totalBenefit: text("total_benefit").notNull().default(""),
+  annualCost: text("annual_cost").notNull().default(""),
+  netBenefit: text("net_benefit").notNull().default(""),
+  eligible: integer("eligible", { mode: "boolean" }).notNull().default(false),
+  issues: text("issues").notNull().default(""),
+  leadText: text("lead_text").notNull().default(""),
+  rawPayload: text("raw_payload").notNull().default(""),
+});

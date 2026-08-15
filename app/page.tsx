@@ -33,6 +33,9 @@ export default function Home() {
   const [contactMessage, setContactMessage] = useState("");
   const [leadOpen, setLeadOpen] = useState(false);
   const [leadCopied, setLeadCopied] = useState(false);
+  const [leadConsent, setLeadConsent] = useState(false);
+  const [leadSaving, setLeadSaving] = useState(false);
+  const [leadStatus, setLeadStatus] = useState("");
   const [minWage, setMinWage] = useState("2300");
   const [avgWage, setAvgWage] = useState("90000");
   const [salary, setSalary] = useState("3000");
@@ -84,7 +87,57 @@ export default function Home() {
   function openLeadForm() {
     setLeadOpen(true);
     setLeadCopied(false);
+    setLeadStatus("");
     window.setTimeout(() => document.querySelector<HTMLInputElement>("#contact-name")?.focus(), 120);
+  }
+
+  function leadEndpoint() {
+    if (typeof window === "undefined") return "/api/leads";
+    return window.location.hostname.endsWith("github.io")
+      ? "https://jukangyuan-aixin-calculator.xiongmurphy4.chatgpt.site/api/leads"
+      : "/api/leads";
+  }
+
+  async function saveLead() {
+    if (!contactName.trim() || !contactMethod.trim()) {
+      setLeadStatus("请先填写称呼和手机或微信");
+      document.querySelector<HTMLInputElement>(!contactName.trim() ? "#contact-name" : "#contact-method")?.focus();
+      return;
+    }
+    if (!leadConsent) {
+      setLeadStatus("请先勾选授权聚康源留存并联系您");
+      return;
+    }
+    setLeadSaving(true);
+    setLeadStatus("");
+    try {
+      const response = await fetch(leadEndpoint(), {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          consent: leadConsent,
+          sourceUrl: window.location.href,
+          contact: {
+            name: contactName,
+            method: contactMethod,
+            region: contactRegion,
+            message: contactMessage,
+          },
+          inputs: { vat, people },
+          parameters: { minWage, avgWage, salary, social, taxRate },
+          eligibility: { business, revenue, separate, employment, grade },
+          result: c,
+          leadText,
+        }),
+      });
+      const data = await response.json() as { id?: string; error?: string };
+      if (!response.ok) throw new Error(data.error || "保存失败");
+      setLeadStatus(data.id ? `已留存记录，编号 ${data.id.slice(0, 8)}` : "已留存记录");
+    } catch (error) {
+      setLeadStatus(error instanceof Error ? error.message : "保存失败，请稍后重试");
+    } finally {
+      setLeadSaving(false);
+    }
   }
 
   async function copyLead() {
@@ -176,7 +229,7 @@ export default function Home() {
 
     <div className="mobile-consult-bar screen-only"><button type="button" disabled={generating || !c.ready} onClick={makePdf}>生成PDF</button><button type="button" onClick={openLeadForm}>咨询复核</button></div>
 
-    {leadOpen && <div className="lead-layer screen-only" role="dialog" aria-modal="true" aria-labelledby="lead-title"><button className="lead-backdrop" type="button" aria-label="关闭咨询表单" onClick={() => setLeadOpen(false)}></button><section className="lead-panel"><button className="lead-close" type="button" aria-label="关闭" onClick={() => setLeadOpen(false)}>×</button><div className="lead-copy"><small>JUKANGYUAN CONSULTATION</small><h2 id="lead-title">获取聚康源正式复核方案</h2><p>留下联系方式后，可把下方咨询信息复制给聚康源顾问，用于进一步核实地区口径、岗位匹配和预计落地收益。</p>{c.ready && <div className="lead-snapshot"><span>预计净收益<strong>{yuan.format(c.net)}</strong></span><span>建议配置<strong>{c.hires} 人</strong></span></div>}</div><div className="lead-fields"><label htmlFor="contact-name">称呼 <em>必填</em><input id="contact-name" value={contactName} onChange={e => { setContactName(e.target.value); setLeadCopied(false); }} placeholder="例如 王总"/></label><label htmlFor="contact-method">手机或微信 <em>必填</em><input id="contact-method" value={contactMethod} onChange={e => { setContactMethod(e.target.value); setLeadCopied(false); }} placeholder="填写手机号或微信号"/></label><label htmlFor="contact-region">所在地区<input id="contact-region" value={contactRegion} onChange={e => setContactRegion(e.target.value)} placeholder="例如 浙江杭州"/></label><label htmlFor="contact-message">补充说明<textarea id="contact-message" value={contactMessage} onChange={e => setContactMessage(e.target.value)} placeholder="例如希望核实当地最低工资、岗位安排或资料清单"></textarea></label></div><div className="lead-preview"><b>将复制给顾问的咨询信息</b><pre>{leadText}</pre></div><button className="lead-submit" type="button" onClick={copyLead}>{leadCopied ? "已复制，可发送给顾问":"复制咨询信息"}</button>{(!contactName.trim() || !contactMethod.trim()) && <p className="lead-hint">请先填写称呼和手机或微信。</p>}</section></div>}
+    {leadOpen && <div className="lead-layer screen-only" role="dialog" aria-modal="true" aria-labelledby="lead-title"><button className="lead-backdrop" type="button" aria-label="关闭咨询表单" onClick={() => setLeadOpen(false)}></button><section className="lead-panel"><button className="lead-close" type="button" aria-label="关闭" onClick={() => setLeadOpen(false)}>×</button><div className="lead-copy"><small>JUKANGYUAN CONSULTATION</small><h2 id="lead-title">获取聚康源正式复核方案</h2><p>提交后会留存本次测算输入、测算结果和联系方式，用于聚康源顾问进一步核实地区口径、岗位匹配和预计落地收益。</p>{c.ready && <div className="lead-snapshot"><span>预计净收益<strong>{yuan.format(c.net)}</strong></span><span>建议配置<strong>{c.hires} 人</strong></span></div>}</div><div className="lead-fields"><label htmlFor="contact-name">称呼 <em>必填</em><input id="contact-name" value={contactName} onChange={e => { setContactName(e.target.value); setLeadCopied(false); setLeadStatus(""); }} placeholder="例如 王总"/></label><label htmlFor="contact-method">手机或微信 <em>必填</em><input id="contact-method" value={contactMethod} onChange={e => { setContactMethod(e.target.value); setLeadCopied(false); setLeadStatus(""); }} placeholder="填写手机号或微信号"/></label><label htmlFor="contact-region">所在地区<input id="contact-region" value={contactRegion} onChange={e => setContactRegion(e.target.value)} placeholder="例如 浙江杭州"/></label><label htmlFor="contact-message">补充说明<textarea id="contact-message" value={contactMessage} onChange={e => setContactMessage(e.target.value)} placeholder="例如希望核实当地最低工资、岗位安排或资料清单"></textarea></label></div><label className="lead-consent"><input type="checkbox" checked={leadConsent} onChange={e => { setLeadConsent(e.target.checked); setLeadStatus(""); }}/><span>我同意聚康源留存本次测算数据和联系方式，并用于后续方案复核与联系。</span></label><div className="lead-preview"><b>将保存的咨询信息</b><pre>{leadText}</pre></div><button className="lead-submit" type="button" disabled={leadSaving} onClick={saveLead}>{leadSaving ? "正在保存…":"提交并留存记录"}</button><button className="lead-copy-button" type="button" onClick={copyLead}>{leadCopied ? "已复制，可发送给顾问":"复制咨询信息"}</button>{leadStatus && <p className="lead-hint" role="status">{leadStatus}</p>}{(!contactName.trim() || !contactMethod.trim()) && <p className="lead-hint">请先填写称呼和手机或微信。</p>}</section></div>}
 
     <footer className="screen-only"><div className="shell"><a className="brand" href="#top"><i>♥</i><span><b>聚康源</b><small>企业残疾人就业综合服务机构</small></span></a><p>爱心就业价值测算由聚康源提供服务。聚康源不是政策发布单位，所有政策内容以主管部门官方文件及实际审核口径为准。</p><a href="#top">回到顶部 ↑</a></div></footer>
   </main>;

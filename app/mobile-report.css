@@ -367,7 +367,8 @@
 .consult-primary,
 .consult-secondary,
 .lead-prompt button,
-.lead-submit {
+.lead-submit,
+.lead-copy-button {
   border: 0;
   border-radius: 12px;
   background: var(--mint);
@@ -586,6 +587,27 @@
   white-space: pre-wrap;
 }
 
+.lead-consent {
+  margin-top: 16px;
+  padding: 13px 14px;
+  border: 1px solid rgba(32, 125, 105, .22);
+  border-radius: 12px;
+  background: #f2f7f4;
+  color: #38535c;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.lead-consent input {
+  margin-top: 3px;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--green);
+}
+
 .lead-submit {
   width: 100%;
   min-height: 52px;
@@ -593,6 +615,21 @@
   background: var(--coral);
   color: #fff;
   font-size: 15px;
+}
+
+.lead-submit:disabled {
+  cursor: wait;
+  opacity: .68;
+}
+
+.lead-copy-button {
+  width: 100%;
+  min-height: 46px;
+  margin-top: 10px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--green);
+  font-size: 14px;
 }
 
 .lead-hint {
@@ -640,7 +677,8 @@
 
   .consult-primary,
   .consult-secondary,
-  .lead-submit {
+  .lead-submit,
+  .lead-copy-button {
     min-height: 48px;
     font-size: 15px;
   }
@@ -691,6 +729,7 @@
 
   .lead-copy p,
   .lead-fields label,
+  .lead-consent,
   .lead-preview pre,
   .lead-hint {
     font-size: 13px;
