@@ -272,6 +272,136 @@
   }
 }
 
+.benefit-table {
+  margin-top: 38px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.benefit-intro {
+  display: grid;
+  grid-template-columns: 0.68fr 1.15fr 1.7fr;
+  gap: 20px;
+  align-items: end;
+  padding: 26px 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.benefit-intro span {
+  width: max-content;
+  border-radius: 999px;
+  background: var(--mint);
+  color: var(--navy);
+  padding: 6px 10px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.benefit-intro h3 {
+  margin: 0;
+  font: 28px/1.28 "Songti SC", STSong, Georgia, serif;
+  letter-spacing: -0.02em;
+}
+
+.benefit-intro p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.benefit-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1.35fr 2fr;
+  gap: 22px;
+  align-items: center;
+  padding: 18px 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.benefit-row.head {
+  min-height: 44px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.benefit-row strong {
+  color: #fff;
+  font-size: 15px;
+}
+
+.benefit-row span {
+  color: var(--mint);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.benefit-row em {
+  color: rgba(255, 255, 255, 0.66);
+  font-style: normal;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.benefit-note {
+  margin: 0;
+  padding: 18px 28px 22px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+@media (max-width: 680px) {
+  .benefit-table {
+    margin-top: 28px;
+    border-radius: 16px;
+  }
+
+  .benefit-intro,
+  .benefit-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 18px;
+  }
+
+  .benefit-intro {
+    align-items: start;
+  }
+
+  .benefit-intro h3 {
+    font-size: 23px;
+  }
+
+  .benefit-intro p,
+  .benefit-row em,
+  .benefit-note {
+    font-size: 12px;
+    line-height: 1.75;
+  }
+
+  .benefit-row.head {
+    display: none;
+  }
+
+  .benefit-row strong {
+    font-size: 15px;
+  }
+
+  .benefit-row span {
+    font-size: 12px;
+  }
+
+  .benefit-note {
+    padding: 16px 18px 20px;
+  }
+}
+
 /* The downloaded report remains A4, with type enlarged for phone PDF viewers. */
 .print-report.exporting {
   padding: 40px;

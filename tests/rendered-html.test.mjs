@@ -28,6 +28,10 @@ test("renders the finished 聚康源 calculator", async () => {
   assert.match(html, /填写完成后生成 PDF/);
   assert.match(html, /咨询复核/);
   assert.match(html, /获取正式复核方案/);
+  assert.match(html, /满25%安置比例重点核验的税费优惠/);
+  assert.match(html, /企业所得税加计扣除/);
+  assert.match(html, /财政部公告2023年第8号/);
+  assert.match(html, /政策以官方文件为准/);
   assert.match(html, /placeholder="例如 1,200,000"/);
   assert.match(html, /class="eligibility-details"/);
   assert.doesNotMatch(html, /value="1200000"/);
@@ -63,6 +67,8 @@ test("does not count unverified tax benefits as confirmed totals", async () => {
   assert.match(page, /城镇土地使用税","实缴税额 × 当地适用减免比例",null,"待地方核实"/);
   assert.match(page, /现有残疾职工按0人/);
   assert.match(page, /跨自然年度须分年度核验/);
+  assert.match(page, /财税〔2009〕70号/);
+  assert.match(page, /地方征收口径需复核/);
 });
 
 test("mobile hero no longer retains the removed illustration height", async () => {
