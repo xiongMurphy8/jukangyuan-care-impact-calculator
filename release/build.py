@@ -17,14 +17,16 @@ asset_dir = f'assets/r-{digest}'
 raw = (ROOT / 'baseline/original.js').read_text()
 state = {'raw': raw}
 exec(compile((ROOT / 'patch.py').read_text(), 'patch.py', 'exec'), state)
-patched = state['patched'].replace('./assets/workplace.webp', f'./{asset_dir}/workplace.webp')
+patched = state['patched'].replace('@@ASSETS@@', asset_dir)
 if output.exists():
     shutil.rmtree(output)
 assets = output / asset_dir
 assets.mkdir(parents=True)
 for source in (ROOT / 'baseline').iterdir():
-    if source.name != 'original.js':
+    if source.name not in ('original.js', 'workplace.webp'):
         shutil.copy2(source, assets / source.name)
+for source in (ROOT / 'photos').glob('*.webp'):
+    shutil.copy2(source, assets / source.name)
 (assets / 'index-StcOqFQT.js').write_text(patched)
 for filename in ('redesign.css', 'production.js'):
     shutil.copy2(ROOT / filename, assets / filename)

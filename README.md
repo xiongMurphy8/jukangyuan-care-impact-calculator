@@ -36,4 +36,6 @@ python3 release/build.py github-pages-dist
 
 咨询继续使用既有 `https://jukangyuan-aixin-calculator.xiongmurphy4.chatgpt.site/api/leads`，本次不迁移客户数据或后台。2026-08-31 OPTIONS 检查显示：接口允许 GitHub Pages 域名，但尚未允许腾讯云域名；因此腾讯云直接提交咨询仍会受 CORS 限制。需在原后端加入精确的腾讯云 Origin，并复核后台 API 是否支持 `x-admin-token`，不能用前端绕过跨域保护。未提交真实客户资料，也不宣称客户留存端到端验证通过。页面现有“复制咨询信息”可供人工转交。
 
-保留原业务计算规则，本次只做已批准的展示发布，不构成政策或税务逻辑复核。首屏图片标注 AI 生成，非企业实拍。
+保留原业务计算规则，本次只做已批准的展示发布，不构成政策或税务逻辑复核。当前页面使用用户提供的 4 张日常工作实拍，已替换 AI 示意图。图片仅做方向校正、缩放和 WebP 压缩，不保留 EXIF；原始照片未上传，来源用 SHA-256 记录在 `release/photos.json`。
+
+四项官方政策原文卡片已从底部移到导航正下方；`#policies` 指向置顶入口，下方政策条件说明保留为 `#policy-details`。

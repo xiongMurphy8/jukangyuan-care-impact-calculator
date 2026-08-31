@@ -1,0 +1,42 @@
+[
+  {
+    "file": "work-team.webp",
+    "caption": "日常工作 · 协作作业",
+    "alt": "工作现场，多位工作人员围绕长桌协作整理材料。",
+    "width": 1600,
+    "height": 1200,
+    "source_collection": "用户提供／日常工作照片",
+    "source_sha256": "71ce91bd8c35958b16b6f246895cdf35532d2cf4e1c8299727566ec3a8e50207",
+    "edits": "仅按EXIF方向旋转、缩放和WebP压缩；未更改画面内容；未保留EXIF"
+  },
+  {
+    "file": "work-sewing.webp",
+    "caption": "缝制作业",
+    "alt": "工作人员在缝纫机旁协作整理布料。",
+    "width": 1080,
+    "height": 810,
+    "source_collection": "用户提供／日常工作照片",
+    "source_sha256": "8b0557af9280bc58bd60d79c01e046468799b12c748dc06dace8453c37a701c8",
+    "edits": "仅按EXIF方向旋转、缩放和WebP压缩；未更改画面内容；未保留EXIF"
+  },
+  {
+    "file": "work-guidance.webp",
+    "caption": "现场指导",
+    "alt": "两位工作人员在桌前共同完成手工作业。",
+    "width": 1080,
+    "height": 810,
+    "source_collection": "用户提供／日常工作照片",
+    "source_sha256": "9998f191d24ad2a1a446eaa1601ad64960c169b855a08160d7cf55b334bd7a0f",
+    "edits": "仅按EXIF方向旋转、缩放和WebP压缩；未更改画面内容；未保留EXIF"
+  },
+  {
+    "file": "work-production.webp",
+    "caption": "生产现场",
+    "alt": "工作人员在堆放生产材料的车间内交流。",
+    "width": 1080,
+    "height": 810,
+    "source_collection": "用户提供／日常工作照片",
+    "source_sha256": "deb8b5ac0143b360341aad656d57123a8d0f493cebb4fce68200c4bb06326957",
+    "edits": "仅按EXIF方向旋转、缩放和WebP压缩；未更改画面内容；未保留EXIF"
+  }
+]
