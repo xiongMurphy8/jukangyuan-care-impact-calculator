@@ -1,7 +1,7 @@
 start = raw.index('(0,x.jsx)(`header`,{id:`top`')
 end = raw.index('(0,x.jsx)(`section`,{id:`calculator`', start)
 old_hero = raw[start:end]
-hero = '''(0,x.jsxs)(`header`,{id:`intro`,className:`hero screen-only`,children:[
+hero = '''(0,x.jsxs)(`header`,{id:`top`,className:`hero screen-only`,children:[
   (0,x.jsxs)(`div`,{className:`shell hero-grid`,children:[
     (0,x.jsxs)(`div`,{className:`hero-copy`,children:[
       (0,x.jsxs)(`h1`,{children:[`1分钟测算企业年度`,(0,x.jsx)(`span`,{children:`政策价值与净收益参考`})]}),
@@ -25,14 +25,7 @@ hero = '''(0,x.jsxs)(`header`,{id:`intro`,className:`hero screen-only`,children:
   ]}),
   (0,x.jsx)(`p`,{className:`hero-note`,children:`聚康源为服务机构，非政府或政策发布单位；测算结果仅供前期参考，不构成政策承诺或最终金额确认。`})
 ]}),'''
-# Relocate the exact existing official link cards; retain all hrefs and labels.
-grid_start = raw.index('(0,x.jsx)(`div`,{className:`policy-grid`')
-grid_end = raw.index('},e[1]))})', grid_start) + len('},e[1]))})')
-policy_grid = raw[grid_start:grid_end]
-assert raw[grid_start - 1] == ','
-tail = raw[end:grid_start - 1] + raw[grid_end:]
-tail = tail.replace('id:`policies`', 'id:`policy-details`', 1)
-spotlight = '(0,x.jsx)(`section`,{id:`top`,className:`policy-spotlight screen-only`,children:(0,x.jsxs)(`div`,{id:`policies`,className:`shell`,children:[(0,x.jsxs)(`div`,{className:`spotlight-heading`,children:[(0,x.jsx)(`h2`,{children:`四项税费政策依据`}),(0,x.jsx)(`p`,{children:`直达财政、税务主管部门官方文件，了解企业安置残疾人就业的政策依据。`})]}),' + policy_grid + ',(0,x.jsx)(`p`,{className:`policy-context`,children:`聚康源为企业服务机构，不是政策发布单位。所有政策内容以主管部门官方文件及实际审核口径为准。`})]})}),'
+# Keep the original policy section and its four official links after the results.
 gallery = '''(0,x.jsx)(`section`,{className:`work-gallery shell screen-only`,children:(0,x.jsxs)(`div`,{children:[
 (0,x.jsxs)(`div`,{className:`work-gallery-heading`,children:[(0,x.jsx)(`h2`,{children:`日常工作现场`}),(0,x.jsx)(`p`,{children:`从协作作业到现场指导，记录真实的工作日常。`})]}),
 (0,x.jsxs)(`div`,{className:`work-gallery-grid`,children:[
@@ -40,7 +33,7 @@ gallery = '''(0,x.jsx)(`section`,{className:`work-gallery shell screen-only`,chi
 (0,x.jsxs)(`figure`,{children:[(0,x.jsx)(`img`,{src:`./@@ASSETS@@/work-guidance.webp`,width:1080,height:810,loading:`lazy`,decoding:`async`,alt:`两位工作人员在桌前共同完成手工作业。`}),(0,x.jsx)(`figcaption`,{children:`现场指导`})]}),
 (0,x.jsxs)(`figure`,{children:[(0,x.jsx)(`img`,{src:`./@@ASSETS@@/work-production.webp`,width:1080,height:810,loading:`lazy`,decoding:`async`,alt:`工作人员在堆放生产材料的车间内交流。`}),(0,x.jsx)(`figcaption`,{children:`生产现场`})]})
 ]})]})}),'''
-patched = raw[:start] + spotlight + hero + gallery + tail
+patched = raw[:start] + hero + gallery + raw[end:]
 # Only exact presentation strings change. Identifiers, fields and financial code stay intact.
 replacements = {
     'children:`开始测算 →`': 'children:`开始测算`',

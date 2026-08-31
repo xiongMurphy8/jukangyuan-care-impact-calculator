@@ -25,7 +25,7 @@ for target in ('tencent-dist', 'github-pages-dist'):
     assert f"./{manifest['assets']}/work-team.webp" in main
     assert "AI生成的包容性办公场景" not in main
     assert main.count("className:`policy-grid`") == 1
-    assert main.index("className:`policy-grid`") < main.index("id:`calculator`")
+    assert main.index("className:`policy-grid`") > main.index("id:`calculator`")
     for photo in re.findall(r'src:`\./([^`]+\.webp)`', main):
         assert (output / photo).is_file()
     for js in (output / manifest['assets']).glob('*.js'):

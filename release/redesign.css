@@ -269,19 +269,7 @@ footer>.shell>a:last-child {color:var(--text);font-size:12px}
 .print-report {--ink:#102d3a;--muted:#687b83;--coral:#f56b5d;--green:#207d69;--mint:#a8dbc7;--navy:#092735;--line:#09273521;--text:#17313e;--secondary:#526571;--stroke:#cbd4da;--surface-soft:#f0f3f5;--accent-soft:#fceeea;--accent-ink:#a33e32;color-scheme:light}
 @media print {.display-tools,.skip-link {display:none!important}}
 
-/* Official source links lead the page; real photographs follow without overlays. */
-.policy-spotlight {padding:116px 0 28px;background:var(--surface-soft);border-bottom:1px solid var(--stroke)}
-.spotlight-heading h2 {font-size:34px;font-weight:650;line-height:1.4;letter-spacing:-.025em;margin:0 0 10px;color:var(--text)}
-.spotlight-heading p {font-size:14px;color:var(--secondary);line-height:1.8;margin:0}
-.policy-spotlight .policy-grid {grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:26px}
-.policy-spotlight .policy-grid>a {display:flex;flex-direction:column;min-height:214px;padding:22px 20px;border:1px solid var(--stroke);border-top:3px solid var(--accent);border-radius:10px;background:var(--surface-raised);color:var(--text)}
-.policy-spotlight .policy-grid>a:hover {border-color:var(--accent-ink);text-decoration:none}
-.policy-spotlight .policy-grid>a>div>span {font-size:21px;font-weight:650;color:var(--text)}
-.policy-spotlight .policy-grid h3 {font-size:15px;line-height:1.65;margin:12px 0;font-weight:500;min-height:50px}
-.policy-spotlight .policy-grid>a>b {font-size:12px;line-height:1.6;margin-top:auto}
-.policy-spotlight .policy-grid>a>small {font-size:12px;font-weight:600;margin-top:12px}
-.policy-context {margin:18px 0 0;color:var(--secondary);font-size:12px;line-height:1.8}
-.hero-grid {padding:48px 0 36px}
+/* Real workplace photographs; policy links remain in the original lower section. */
 .hero h1 {font-size:clamp(30px,3.15vw,44px)}
 .workplace-visual figcaption {font-size:12px}
 .work-gallery {padding:44px 0 48px}
@@ -292,23 +280,7 @@ footer>.shell>a:last-child {color:var(--text);font-size:12px}
 .work-gallery img {display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:var(--surface-soft)}
 .work-gallery figcaption {margin-top:10px;font-size:14px;font-weight:500;color:var(--text)}
 .work-gallery + .calculator {border-top:1px solid var(--stroke)}
-@media(max-width:1024px) {
-  .policy-spotlight .policy-grid {grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-  .policy-spotlight .policy-grid>a {min-height:190px}
-  .policy-spotlight .policy-grid h3 {min-height:0}
-}
 @media(max-width:680px) {
-  .policy-spotlight {padding:94px 0 24px}
-  .spotlight-heading h2 {font-size:27px;margin-bottom:10px}
-  .spotlight-heading p {font-size:13px}
-  .policy-spotlight .policy-grid {gap:12px;margin-top:20px}
-  .policy-spotlight .policy-grid>a {min-height:207px;padding:15px 12px}
-  .policy-spotlight .policy-grid>a>div>span {font-size:19px}
-  .policy-spotlight .policy-grid h3 {font-size:13px;line-height:1.6;margin:10px 0}
-  .policy-spotlight .policy-grid>a>b {font-size:11px}
-  .policy-spotlight .policy-grid>a>small {font-size:11px;margin-top:10px}
-  .policy-context {font-size:11px;margin-top:16px}
-  .hero-grid {padding:32px 0 26px}
   .hero h1 {font-size:clamp(23px,6.35vw,31px)}
   .work-gallery {padding:32px 0 36px}
   .work-gallery-heading h2 {font-size:24px}
