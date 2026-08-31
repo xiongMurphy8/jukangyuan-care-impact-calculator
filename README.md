@@ -1,100 +1,39 @@
-# vinext-starter
+# 聚康源｜爱心就业价值测算
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+- 腾讯云：https://canbaojin-d7gfb2yfg490fc759-1427274058.tcloudbaseapp.com/jukangyuan/
+- GitHub Pages：https://xiongmurphy8.github.io/jukangyuan-care-impact-calculator/
 
-## Prerequisites
+## 当前发布方式
 
-- Node.js `>=22.13.0`
+`release/` 是 2026-08-31 用户确认的页面版本。使用线上公开构建包作为固定基线，通过确定性脚本仅替换首屏及批准的展示文案，再叠加响应式样式和主题/键盘适配。保留原测算、PDF 分包、咨询提交和客户记录入口。
 
-## Quick Start
+仓库原有 `app/` 源码比当前线上包旧，缺少部分功能，因此本次没有用旧源码覆盖线上功能。`npm run build` 仍构建旧 vinext 源码，**不要将该产物误用为本次发布版本**。未来应先补齐最新业务源码，再迁移这层展示补丁。
 
-```bash
-npm install
-npm run dev
-npm run build
+## 确定性构建（Python 3.10+，无外部依赖）
+
+```sh
+python3 release/verify.py
+# 或 npm run test:release
+python3 release/build.py tencent-dist
+python3 release/build.py github-pages-dist
 ```
 
-This starter does not use `wrangler.jsonc`.
+两处输出字节一致，所有路径相对页面目录，适用于腾讯云 `/jukangyuan/` 及 GitHub Pages 仓库子目录。资源放入内容摘要命名的目录，PDF 内部相对导入保留原文件名；`release-manifest.json` 记录每个文件 SHA-256。
 
-## Included Shape
+- `release/baseline/`：原公开业务包、CSS、PDF 分包及已批准的 WebP 场景图。
+- `release/patch.py`：首屏和有限展示字符串变更。
+- `release/redesign.css`：浅深色及桌面/手机样式。
+- `release/production.js`：显示模式、弹窗键盘操作。没有本地预览的提交拦截。
+- `release/evidence/`：前期视觉检查及图片生成说明，不含客户资料。
 
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
+## 发布与回退
 
-## Workspace Auth Headers
+推送到原默认分支 `agent/publish-care-calculator` 会触发 GitHub Pages 工作流；构建前运行完整性验证。
 
-Signed-in visitors receive both `oai-authenticated-user-id` and `oai-authenticated-user-email`. Private Sites require every visitor to sign in; public Sites may also have anonymous visitors, for whom neither header is present.
+腾讯云环境 `canbaojin-d7gfb2yfg490fc759`，仅发布 `jukangyuan/`。先上传 `tencent-dist/assets` 到 `jukangyuan/assets`，再上传清单，最后上传 `index.html`。不删除旧资源或修改其他站点目录。回退时恢复发布前备份的 `jukangyuan/index.html`。
 
-The user ID is stable for the same user on the same Site and different across Sites. Email and name are intended for display or contact purposes.
+## 已知限制
 
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
+咨询继续使用既有 `https://jukangyuan-aixin-calculator.xiongmurphy4.chatgpt.site/api/leads`，本次不迁移客户数据或后台。2026-08-31 OPTIONS 检查显示：接口允许 GitHub Pages 域名，但尚未允许腾讯云域名；因此腾讯云直接提交咨询仍会受 CORS 限制。需在原后端加入精确的腾讯云 Origin，并复核后台 API 是否支持 `x-admin-token`，不能用前端绕过跨域保护。未提交真实客户资料，也不宣称客户留存端到端验证通过。页面现有“复制咨询信息”可供人工转交。
 
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const userId = requestHeaders.get("oai-authenticated-user-id");
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
-```
-
-## Optional Dispatch-Owned ChatGPT Sign-In
-
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
-
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
-
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
-
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
-
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
-
-## Useful Commands
-
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
-
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+保留原业务计算规则，本次只做已批准的展示发布，不构成政策或税务逻辑复核。首屏图片标注 AI 生成，非企业实拍。

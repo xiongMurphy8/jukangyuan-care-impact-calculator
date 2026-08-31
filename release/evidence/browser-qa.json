@@ -1,0 +1,126 @@
+[
+  {
+    "url": "https://canbaojin-d7gfb2yfg490fc759-1427274058.tcloudbaseapp.com/jukangyuan/#top",
+    "test": "example-1200000-36",
+    "text": "实时测算\n由聚康源提供服务\n年度净收益参考\n¥795,000\n仅计入当前筛选条件满足的项目，再扣除预计新增用工成本\n建议配置\n12人\n政策价值\n135.7万\n用工成本\n56.2万\n✓\n按当前条件初步可行\n建议展开资格筛选进一步核实\n生成 PDF 报告 →获取人工复核建议\n\nPDF 使用当前填写的数据，点击后直接下载。落地前需结合地区口径和企业资料复核。"
+  },
+  {
+    "url": "http://127.0.0.1:4173/",
+    "test": "example-1200000-36",
+    "text": "实时测算\n由聚康源提供服务\n年度净收益参考\n¥795,000\n仅计入当前筛选条件满足的项目，再扣除预计新增用工成本\n建议配置\n12人\n政策价值\n135.7万\n用工成本\n56.2万\n✓\n按当前条件初步可行\n建议展开资格筛选进一步核实\n生成 PDF 报告人工复核\n\nPDF 使用当前填写的数据，点击后直接下载。落地前需结合地区口径和企业资料复核。"
+  },
+  {
+    "test": "mobile-light",
+    "state": {
+      "ctaBottom": 314.03125,
+      "h1Height": 75.78125,
+      "heroHeight": 588.90625,
+      "lineHeight": "37.8885px",
+      "scrollWidth": 390,
+      "width": 390
+    }
+  },
+  {
+    "url": "https://canbaojin-d7gfb2yfg490fc759-1427274058.tcloudbaseapp.com/jukangyuan/#top",
+    "test": "ineligible-retail",
+    "text": "实时测算\n由聚康源提供服务\n当前条件下净收益参考\n-¥405,000\n仅计入当前筛选条件满足的项目，再扣除预计新增用工成本\n建议配置\n12人\n政策价值\n15.7万\n用工成本\n56.2万\n!\n当前存在待完善条件\n业务性质需要核实，未满足项目暂不计入合计\n生成 PDF 报告 →获取人工复核建议\n\nPDF 使用当前填写的数据，点击后直接下载。落地前需结合地区口径和企业资料复核。"
+  },
+  {
+    "url": "http://127.0.0.1:4173/#calculator",
+    "test": "ineligible-retail",
+    "text": "实时测算\n由聚康源提供服务\n当前条件下净收益参考\n-¥405,000\n仅计入当前筛选条件满足的项目，再扣除预计新增用工成本\n建议配置\n12人\n政策价值\n15.7万\n用工成本\n56.2万\n!\n当前存在待完善条件\n业务性质需要核实，未满足项目暂不计入合计\n生成 PDF 报告人工复核\n\nPDF 使用当前填写的数据，点击后直接下载。落地前需结合地区口径和企业资料复核。\n\nPDF 已生成，请查看浏览器下载记录"
+  },
+  {
+    "test": "contact-post-blocked",
+    "message": "这是本地视觉预览，未保存或发送任何客户资料。正式咨询请返回原网站。"
+  },
+  {
+    "test": "escape-closes-dialog",
+    "dialogs": 0
+  },
+  {
+    "test": "layout-and-contrast",
+    "state": {
+      "contrastFailures": [],
+      "emDashes": 0,
+      "heroLines": 2,
+      "navHeight": 68,
+      "overflow": false,
+      "theme": "light",
+      "viewport": 320
+    }
+  },
+  {
+    "test": "layout-and-contrast",
+    "state": {
+      "contrastFailures": [],
+      "emDashes": 0,
+      "heroLines": 2,
+      "navHeight": 68,
+      "overflow": false,
+      "theme": "light",
+      "viewport": 390
+    }
+  },
+  {
+    "test": "layout-and-contrast",
+    "state": {
+      "contrastFailures": [],
+      "emDashes": 0,
+      "heroLines": 2,
+      "navHeight": 80,
+      "overflow": false,
+      "theme": "light",
+      "viewport": 768
+    }
+  },
+  {
+    "test": "layout-and-contrast",
+    "state": {
+      "contrastFailures": [],
+      "emDashes": 0,
+      "heroLines": 2,
+      "navHeight": 80,
+      "overflow": false,
+      "theme": "light",
+      "viewport": 1024
+    }
+  },
+  {
+    "test": "layout-and-contrast",
+    "state": {
+      "contrastFailures": [],
+      "emDashes": 0,
+      "heroLines": 2,
+      "navHeight": 80,
+      "overflow": false,
+      "theme": "light",
+      "viewport": 1280
+    }
+  },
+  {
+    "test": "layout-and-contrast",
+    "state": {
+      "contrastFailures": [],
+      "emDashes": 0,
+      "heroLines": 2,
+      "navHeight": 80,
+      "overflow": false,
+      "theme": "dark",
+      "viewport": 1280
+    }
+  },
+  {
+    "test": "dialog-after-final-fix",
+    "dialogCount": 1,
+    "contrast": {
+      "contrastFailures": [],
+      "emDashes": 0,
+      "heroLines": 2,
+      "navHeight": 80,
+      "overflow": false,
+      "theme": "light",
+      "viewport": 1280
+    }
+  }
+]

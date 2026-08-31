@@ -21,15 +21,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-      - name: Setup Node
-        uses: actions/setup-node@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          node-version: 22
-          cache: npm
-      - name: Install dependencies
-        run: npm ci
-      - name: Build static site
-        run: npm run build:pages
+          python-version: "3.12"
+      - name: Build and verify approved release
+        run: python3 release/verify.py
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
